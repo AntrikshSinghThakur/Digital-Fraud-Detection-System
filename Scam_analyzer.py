@@ -61,9 +61,11 @@ IMPORTANT:
 - Do not invent requests absent from the message.
 
 3. EVIDENCE SUPPORTING CLASSIFICATION
-Quote exact phrases from the message.
-Explain what each phrase demonstrates.
-If there is no meaningful evidence, say so.
+Provide the evidence in the following exact Markdown table structure with both columns filled:
+| Quote from the message | What it demonstrates |
+| :--- | :--- |
+| "[Exact quoted phrase from message]" | [Explain what this specific phrase demonstrates] |
+If there is no meaningful evidence, state that explicitly.
 
 4. POSSIBLE SCAM TECHNIQUES
 Identify only techniques supported by exact evidence.
@@ -107,10 +109,10 @@ Do not select Likely Scam without clear supporting evidence.
             client = Groq(api_key=st.secrets["GROQ_API_KEY"])
             
             completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.1,
-            max_tokens=500
+                model="llama-3.3-70b-versatile",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.1,
+                max_tokens=500
             )
             
             raw_content = completion.choices[0].message.content.strip()
