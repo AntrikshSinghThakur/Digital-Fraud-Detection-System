@@ -13,4 +13,4 @@ An advanced, hybrid AI-powered security engine designed to analyze consumer text
 - `evidence_analyzer.py`: The rule-based scoring module evaluating string metrics and financial indicators.
 
 ## 🚀 Deployed Link
-This project is officially live and deployed via **Streamlit Community Cloud**.
+This project is officially live and deployed via **https://digital-fraud-detection-system-hpj4zjj6loe55xpqyo6h2b.streamlit.app/**.
