@@ -107,7 +107,7 @@ Do not select Likely Scam without clear supporting evidence.
             client = Groq(api_key=st.secrets["GROQ_API_KEY"])
             
             completion = client.chat.completions.create(
-                model="llama-3.3-70b-specdec", 
+                model="llama-3.3-70b-versatile",
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.1,
                 max_tokens=450
