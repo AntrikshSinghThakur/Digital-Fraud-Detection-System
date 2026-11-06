@@ -107,7 +107,7 @@ Do not select Likely Scam without clear supporting evidence.
             client = Groq(api_key=st.secrets["GROQ_API_KEY"])
             
             completion = client.chat.completions.create(
-                model="llama-3.1-8b-instant",  # Change to this exact active ID
+                model="openai/gpt-oss-20b",  # Change to this exact active ID
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.1,
                 max_tokens=450
@@ -151,12 +151,9 @@ Do not select Likely Scam without clear supporting evidence.
             )
 
 def filter_refusals(result):
+    # If the response is empty, return a clear notice instead of hiding it
     if not result:
-        return (
-            "AI analysis could not be completed.\n\n"
-            "Please use the independent Python evidence-based "
-            "classification shown by the system."
-        )
+        return "⚠️ Note: The AI returned an empty response for this message."
 
     refusal_phrases = [
         "i cannot provide a final classification",
