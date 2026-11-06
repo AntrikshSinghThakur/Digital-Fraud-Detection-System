@@ -107,7 +107,7 @@ Do not select Likely Scam without clear supporting evidence.
             client = Groq(api_key=st.secrets["GROQ_API_KEY"])
             
             completion = client.chat.completions.create(
-                model="openai/gpt-oss-20b",  # Change to this exact active ID
+                model="llama-3.3-70b-versatile",  # Change to this exact active ID
                 messages=[{"role": "user", "content": prompt}],
                 temperature=0.1,
                 max_tokens=450
