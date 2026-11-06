@@ -107,13 +107,17 @@ Do not select Likely Scam without clear supporting evidence.
             client = Groq(api_key=st.secrets["GROQ_API_KEY"])
             
             completion = client.chat.completions.create(
-                model="openai/gpt-oss-20b",  # Change to this exact active ID
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.1,
-                max_tokens=450
+            model="llama-3.3-70b-versatile",
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.1,
+            max_tokens=500
             )
             
-            result = completion.choices[0].message.content.strip()
+            raw_content = completion.choices[0].message.content.strip()
+            if not raw_content or not raw_content.strip():
+                result = "API returned an empty output. Check prompt structure or model status."
+            else:
+                result = raw_content.strip()
             return filter_refusals(result)
             
         except Exception as error:
