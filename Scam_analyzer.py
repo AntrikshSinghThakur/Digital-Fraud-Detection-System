@@ -113,7 +113,7 @@ Do not select Likely Scam without clear supporting evidence.
                 max_tokens=450
             )
             
-            result = completion.choices.message.content.strip()
+            result = completion.choices[0].message.content.strip()
             return filter_refusals(result)
             
         except Exception as error:
