@@ -24,6 +24,21 @@ st.markdown("""
     [data-testid="stMetricValue"] {
         font-size: 26px;
         font-weight: 700;
+        /* Custom primary button styling with gradient */
+    .stButton>button {
+        background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%) !important;
+        color: white !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
+        border: none !important;
+        padding: 0.6rem 1.2rem !important;
+        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+        transition: all 0.3s ease;
+    }
+    .stButton>button:hover {
+        background: linear-gradient(135deg, #0369a1 0%, #075985 100%) !important;
+        box-shadow: 0 6px 16px rgba(2, 132, 199, 0.5);
+    }
     }
     </style>
 """, unsafe_allow_html=True)
@@ -70,19 +85,20 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ----------------------------------
-# 5. USER INPUT
+# USER INPUT
 # ----------------------------------
-st.markdown("### 🔹 :blue[Enter Suspicious Information]")
+with st.container(border=True):
+    st.markdown("### 🔹 :blue[Enter Suspicious Information]")
 
-message = st.text_area(
-    "Paste a suspicious SMS or email:",
-    placeholder="Example: Your account is blocked. Verify your details..."
-)
+    message = st.text_area(
+        "Paste a suspicious SMS or email:",
+        placeholder="Example: Your account is blocked. Verify your details..."
+    )
 
-url = st.text_input(
-    "Enter a suspicious website URL:",
-    placeholder="https://example.com"
-)
+    url = st.text_input(
+        "Enter a suspicious website URL:",
+        placeholder="https://example.com"
+    )
 
 # ----------------------------------
 # 6. INVESTIGATION BUTTON & EXECUTION
@@ -141,20 +157,25 @@ if st.button("🚀 Start Investigation", type="primary"):
         risk_level = report.get("risk_level", "Unknown")
         risk_score = report.get("risk_score", 0)
 
-        st.metric(
-            label="🎯 Overall Risk Score",
-            value=f"{risk_score} / 12",
-            help="Score based on detected suspicious indicators."
-        )
-
-        if risk_level == "High":
-            st.error("🚨 HIGH RISK — Immediate Attention Required")
-        elif risk_level == "Medium":
-            st.warning("⚠️ MEDIUM RISK — Further Investigation Needed")
-        elif risk_level == "Low":
-            st.success("🟢 LOW RISK — No Major Threat Indicators")
-        else:
-            st.info("Risk assessment unavailable.")
+        # REPLACE FROM HERE (Line 160) DOWN TO THE CAPTION:
+        col_m1, col_m2 = st.columns([1, 2])
+        
+        with col_m1:
+            st.metric(
+                label="🎯 Threat Score",
+                value=f"{risk_score} / 12",
+                help="Score based on detected suspicious indicators."
+            )
+            
+        with col_m2:
+            if risk_level == "High":
+                st.error("🚨 HIGH RISK — Immediate Attention Required")
+            elif risk_level == "Medium":
+                st.warning("⚠️ MEDIUM RISK — Further Investigation Needed")
+            elif risk_level == "Low":
+                st.success("🟢 LOW RISK — No Major Threat Indicators")
+            else:
+                st.info("Risk assessment unavailable.")
 
         st.caption(
             "Risk levels are preliminary assessments based on "
