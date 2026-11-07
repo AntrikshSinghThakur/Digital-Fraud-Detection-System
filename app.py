@@ -53,6 +53,28 @@ st.markdown("""
         padding: 15px;
         border-radius: 10px;
         box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+        /* Telemetry cards for analysis indicators */
+    .telemetry-card {
+        background-color: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 12px;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    
+    .telemetry-card h4 {
+        margin: 0 0 6px 0;
+        font-size: 14px;
+        color: #0f172a;
+        font-weight: 600;
+    }
+
+    .telemetry-card p {
+        margin: 0;
+        font-size: 13px;
+        color: #334155;
+    }
     }
     </style>
 """, unsafe_allow_html=True)
@@ -171,7 +193,6 @@ if st.button("🚀 Start Investigation", type="primary"):
         risk_level = report.get("risk_level", "Unknown")
         risk_score = report.get("risk_score", 0)
 
-        # REPLACE FROM HERE (Line 160) DOWN TO THE CAPTION:
         col_m1, col_m2 = st.columns([1, 2])
         
         with col_m1:
@@ -195,6 +216,82 @@ if st.button("🚀 Start Investigation", type="primary"):
             "Risk levels are preliminary assessments based on "
             "the current detection rules and analysis."
         )
+        # ----------------------------------
+# MESSAGE ANALYSIS INDICATORS (8 COLUMNS)
+# ----------------------------------
+with st.container(border=True):
+    st.markdown("### 🔍 :blue[Message Analysis Breakdown]")
+    st.caption("Detailed breakdown of detected threat indicators")
+    
+    # Row 1: First 4 Columns
+    col1, col2, col3, col4 = st.columns(4)
+    
+    with col1:
+        st.markdown("""
+            <div class="telemetry-card">
+                <h4>⚠️ Urgency Hook</h4>
+                <p>High urgency language detected.</p>
+            </div>
+        """, unsafe_allow_html=True)
+        
+    with col2:
+        st.markdown("""
+            <div class="telemetry-card">
+                <h4>💳 Payment / UPI</h4>
+                <p>Direct payment or PIN request.</p>
+            </div>
+        """, unsafe_allow_html=True)
+
+    with col3:
+        st.markdown("""
+            <div class="telemetry-card">
+                <h4>🔗 Suspicious Links</h4>
+                <p>Unverified third-party domain.</p>
+            </div>
+        """, unsafe_allow_html=True)
+
+    with col4:
+        st.markdown("""
+            <div class="telemetry-card">
+                <h4>🎁 Prize / Bonus</h4>
+                <p>Unrealistic reward promise.</p>
+            </div>
+        """, unsafe_allow_html=True)
+
+    # Row 2: Next 4 Columns
+    col5, col6, col7, col8 = st.columns(4)
+
+    with col5:
+        st.markdown("""
+            <div class="telemetry-card">
+                <h4>📱 Contact Redirection</h4>
+                <p>Directing to external chat apps.</p>
+            </div>
+        """, unsafe_allow_html=True)
+
+    with col6:
+        st.markdown("""
+            <div class="telemetry-card">
+                <h4>🔑 Credential Trap</h4>
+                <p>Requesting password or OTP.</p>
+            </div>
+        """, unsafe_allow_html=True)
+
+    with col7:
+        st.markdown("""
+            <div class="telemetry-card">
+                <h4>🏛️ Brand Spoofing</h4>
+                <p>Impersonating known bank/brand.</p>
+            </div>
+        """, unsafe_allow_html=True)
+
+    with col8:
+        st.markdown("""
+            <div class="telemetry-card">
+                <h4>🌐 IP / Lookalike URL</h4>
+                <p>Raw IP address or typo-domain.</p>
+            </div>
+        """, unsafe_allow_html=True)
 
         st.divider()
 
