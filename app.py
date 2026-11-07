@@ -16,6 +16,11 @@ st.set_page_config(
 # ----------------------------------
 st.markdown("""
     <style>
+    /* Force Dark Mode Theme Background */
+    .stApp{
+        background-color: #0f172a;
+        color: #f8fafc;
+    }
     /* Hide top header bar and default footer */
     header {visibility: hidden;}
     footer {visibility: hidden;}
