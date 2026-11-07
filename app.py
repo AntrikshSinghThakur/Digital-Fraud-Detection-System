@@ -46,15 +46,28 @@ with st.sidebar:
     st.caption("🔒 Enterprise Security Edition")
 
 # ----------------------------------
-# 4. PAGE TITLE CONTAINER
+# PAGE TITLE (Custom Styled Banner)
 # ----------------------------------
-with st.container(border=True):
-    st.markdown(":blue[🛡️ CYBERSECURITY | THREAT INTELLIGENCE]")
-    st.title("Digital Fraud Detection and Investigation System")
-    st.write(
-        "Intelligent investigation of suspicious messages, "
-        "phishing indicators and potentially fraudulent URLs."
-    )
+st.markdown("""
+    <div style="
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); 
+        padding: 30px; 
+        border-radius: 14px; 
+        border: 1px solid #334155; 
+        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        margin-bottom: 25px;
+    ">
+        <p style="color: #38bdf8; font-weight: 700; margin-bottom: 8px; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;">
+            🛡️ Cybersecurity | Threat Intelligence
+        </p>
+        <h1 style="color: #ffffff; margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.5px;">
+            Digital Fraud Detection and Investigation System
+        </h1>
+        <p style="color: #94a3b8; margin-top: 10px; margin-bottom: 0; font-size: 15px; line-height: 1.5;">
+            Intelligent investigation of suspicious messages, phishing indicators and potentially fraudulent URLs.
+        </p>
+    </div>
+""", unsafe_allow_html=True)
 
 # ----------------------------------
 # 5. USER INPUT
