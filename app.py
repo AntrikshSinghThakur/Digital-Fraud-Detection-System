@@ -39,6 +39,30 @@ st.markdown("""
         background: linear-gradient(135deg, #0369a1 0%, #075985 100%) !important;
         box-shadow: 0 6px 16px rgba(2, 132, 199, 0.5);
     }
+    /* Modern dark card styling for containers */
+    div[data-testid="stVerticalBlock"] > div[style*="border"] {
+        background: linear-gradient(145deg, #0f172a 0%, #1e293b 100%) !important;
+        border: 1px solid #334155 !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        padding: 15px;
+    }
+
+    /* Glowing accent effect for metric containers */
+    [data-testid="stMetric"] {
+        background: rgba(30, 41, 59, 0.7);
+        border: 1px solid #38bdf8;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+    }
+
+    /* Vibrant status box adjustments */
+    div.stAlert {
+        border-radius: 8px !important;
+        border: none !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
     }
     </style>
 """, unsafe_allow_html=True)
